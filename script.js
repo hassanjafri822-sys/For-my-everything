@@ -103,3 +103,5 @@ button.addEventListener("click", () => {
     opening.classList.add("roll-away");
 
 });
+
+window.location.href = "scene1.html";
