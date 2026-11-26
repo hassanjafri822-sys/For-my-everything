@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Something I Want You to See</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="cinema">
+
+        <!-- SCENE 1 IS LOADED BEHIND THE OPENING -->
+
+        <iframe
+            src="../scene1.html"
+            class="scene-frame"
+            title="Scene One">
+        </iframe>
+
+
+        <!-- OPENING SCREEN -->
+
+        <div class="opening-screen">
+
+            <div class="background"></div>
+            <div class="fog"></div>
+            <div class="vignette"></div>
+            <div class="grain"></div>
+
+            <main class="content">
+
+                <p class="intro-text">
+                    Some things are difficult to say...
+                </p>
+
+                <button id="forgiveBtn" class="forgive-btn">
+                    <span>Please forgive me?</span>
+                    <div class="button-line"></div>
+                </button>
+
+            </main>
+
+            <div class="bottom-text">
+                A little something, from me to you.
+            </div>
+
+        </div>
+
+
+        <!-- RAIN CONTINUES OVER BOTH SCENES -->
+
+        <canvas id="rain"></canvas>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
