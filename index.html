@@ -3,59 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Something I Want You to See</title>
+    <title>For You</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="cinema">
+    <main class="opening-screen" id="openingScreen">
 
-        <!-- SCENE 1 IS LOADED BEHIND THE OPENING -->
+        <div class="city-background"></div>
+        <div class="fog"></div>
+        <div class="vignette"></div>
 
-        <iframe
-            src="../scene1.html"
-            class="scene-frame"
-            title="Scene One">
-        </iframe>
+        <canvas id="rainCanvas"></canvas>
 
+        <div class="opening-content">
 
-        <!-- OPENING SCREEN -->
+            <span class="small-text">SOME WORDS ARE WORTH THE WAIT</span>
 
-        <div class="opening-screen">
+            <h1>
+                A little something<br>
+                for you.
+            </h1>
 
-            <div class="background"></div>
-            <div class="fog"></div>
-            <div class="vignette"></div>
-            <div class="grain"></div>
+            <p>
+                Take a moment. There's something I'd like to say.
+            </p>
 
-            <main class="content">
-
-                <p class="intro-text">
-                    Some things are difficult to say...
-                </p>
-
-                <button id="forgiveBtn" class="forgive-btn">
-                    <span>Please forgive me?</span>
-                    <div class="button-line"></div>
-                </button>
-
-            </main>
-
-            <div class="bottom-text">
-                A little something, from me to you.
-            </div>
+            <button id="startButton">
+                Please forgive me?
+            </button>
 
         </div>
 
+        <div class="bottom-text">
+            A LETTER FROM THE HEART
+        </div>
 
-        <!-- RAIN CONTINUES OVER BOTH SCENES -->
-
-        <canvas id="rain"></canvas>
-
-    </div>
+    </main>
 
     <script src="script.js"></script>
 

@@ -1,44 +1,42 @@
-const canvas = document.getElementById("rain");
+const openingScreen = document.getElementById("openingScreen");
+const startButton = document.getElementById("startButton");
+
+const canvas = document.getElementById("rainCanvas");
 const ctx = canvas.getContext("2d");
 
-const button = document.getElementById("forgiveBtn");
-const opening = document.querySelector(".opening-screen");
-
-let width;
-let height;
-let drops = [];
+let rain = [];
 
 function resizeCanvas() {
 
-    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    width = window.innerWidth;
-    height = window.innerHeight;
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
 
-    canvas.width = width * ratio;
-    canvas.height = height * ratio;
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
 
-    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
     createRain();
-}
 
+}
 
 function createRain() {
 
-    drops = [];
+    rain = [];
 
-    for (let i = 0; i < 230; i++) {
+    const count = Math.floor(window.innerWidth * 0.45);
 
-        drops.push({
+    for (let i = 0; i < count; i++) {
 
-            x: Math.random() * width,
-            y: Math.random() * height,
+        rain.push({
 
-            length: Math.random() * 20 + 10,
-            speed: Math.random() * 7 + 5,
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
 
-            opacity: Math.random() * 0.35 + 0.1
+            length: Math.random() * 18 + 8,
+            speed: Math.random() * 4 + 3
 
         });
 
@@ -46,36 +44,32 @@ function createRain() {
 
 }
 
-
 function drawRain() {
 
-    ctx.clearRect(0, 0, width, height);
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
-    drops.forEach(drop => {
+    ctx.strokeStyle = "rgba(190, 220, 235, 0.3)";
+    ctx.lineWidth = 0.7;
+
+    rain.forEach(drop => {
 
         ctx.beginPath();
-
-        ctx.strokeStyle =
-            `rgba(190, 215, 235, ${drop.opacity})`;
-
-        ctx.lineWidth = 1;
 
         ctx.moveTo(drop.x, drop.y);
 
         ctx.lineTo(
-            drop.x - 2,
+            drop.x - 1,
             drop.y + drop.length
         );
 
         ctx.stroke();
 
         drop.y += drop.speed;
-        drop.x -= 0.8;
 
-        if (drop.y > height) {
+        if (drop.y > window.innerHeight) {
 
-            drop.y = -drop.length;
-            drop.x = Math.random() * width;
+            drop.y = -20;
+            drop.x = Math.random() * window.innerWidth;
 
         }
 
@@ -85,23 +79,25 @@ function drawRain() {
 
 }
 
-
 window.addEventListener("resize", resizeCanvas);
 
 resizeCanvas();
 drawRain();
 
+/* OPEN SCENE 1 */
 
-/* THE SCREEN ROLLS UP */
+startButton.addEventListener("click", () => {
 
-button.addEventListener("click", () => {
+    if (startButton.disabled) return;
 
-    if (button.disabled) return;
+    startButton.disabled = true;
 
-    button.disabled = true;
+    openingScreen.classList.add("roll-away");
 
-    opening.classList.add("roll-away");
+    setTimeout(() => {
+
+        window.location.href = "scene1.html";
+
+    }, 1300);
 
 });
-
-window.location.href = "scene1.html";
